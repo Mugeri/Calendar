@@ -15,7 +15,6 @@ import 'moment/locale/zh-cn';
 import 'moment/locale/en-gb';
 
 const unavailableDates = require('./results.json');
-const timeDates= require('./static.json');
 
 // use this to turn the range strings inthe json file to dates
 function stringToDate(dateString) {
@@ -157,16 +156,6 @@ function isValidRange(v) {
 
 function onStandaloneChange(value) {
   console.log('onChange');
-  Object.keys(timeDates).forEach((key, index) => {
-    const timeDate = timeDates[key];
-    if (timeDate.date == format(value[0])) {
-      console.log(timeDate.time);
-      availableTime = timeDate.time;
-      console.log('AVAILABLE TIME: ', moment(availableTime, 'HH:mm:ss'));
-      availableTime = moment(availableTime, 'HH:mm:ss');
-      console.log(moment(availableTime).format('dddd'))
-    }
-  })
   console.log(value[0] && format(value[0]), value[1] && format(value[1]));
 }
 
